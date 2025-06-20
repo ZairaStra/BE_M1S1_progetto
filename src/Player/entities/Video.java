@@ -91,7 +91,33 @@ public class Video extends MultimediaElement implements CanBright, CanPlay {
 
     //show() e play() in Video devono essere un unico metodo play che stampa anche la luminosità
     public void play() {
-        System.out.println("Titolo: " + title + " , luminosità: " + getBrightness() + " , volume: " + getVolume());
+        String stamp = "Titolo: " + title + " , luminosità: " + getBrightness() + " , volume: " + getVolume();
+        switch (duration) {
+            case 1 -> System.out.println(stamp);
+            case 2 -> {
+                System.out.println(stamp);
+                System.out.println(stamp);
+            }
+            case 3 -> {
+                System.out.println(stamp);
+                System.out.println(stamp);
+                System.out.println(stamp);
+            }
+            case 4 -> {
+                System.out.println(stamp);
+                System.out.println(stamp);
+                System.out.println(stamp);
+                System.out.println(stamp);
+            }
+            case 5 -> {
+                System.out.println(stamp);
+                System.out.println(stamp);
+                System.out.println(stamp);
+                System.out.println(stamp);
+                System.out.println(stamp);
+            }
+            default -> System.out.println("Durata non valida");
+        }
     }
 }
 
