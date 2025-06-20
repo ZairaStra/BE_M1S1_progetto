@@ -1,4 +1,5 @@
 import Player.entities.*;
+import Player.entities.enums.MultimediaType;
 
 import java.util.Scanner;
 
@@ -10,11 +11,61 @@ public class Main {
         MultimediaElement[] element = new MultimediaElement[5];
 
         //provo prima con l'inserimento manuale
-        element[0] = new Audio("Record1", 4, 3.2);
-        element[1] = new Video("Funny dogs", 2, 7, 2.1);
-        element[2] = new Image("Sunrise", 5);
-        element[3] = new Image("Seaside", 2);
-        element[4] = new Video("Surfing parrots", 4, 5, 7.4);
+//        element[0] = new Audio("Record1", 4, 3.2);
+//        element[1] = new Video("Funny dogs", 2, 7, 2.1);
+//        element[2] = new Image("Sunrise", 5);
+//        element[3] = new Image("Seaside", 2);
+//        element[4] = new Video("Surfing parrots", 4, 5, 7.4);
+
+
+        //versione con lo scanner
+        for (int i = 0; i < element.length; i++) {
+            System.out.println("Inserisci il formato dell'elemento multimediale: 1.IMAGE, 2.AUDIO, 3.VIDEO");
+            int selectedEnum = Integer.parseInt(scanner.nextLine());
+
+            //setto il tipo a nullo per accedere
+            MultimediaType type = null;
+
+            //lo riempio con lo switch
+            switch (selectedEnum) {
+                case 1 -> type = MultimediaType.IMAGE;
+                case 2 -> type = MultimediaType.AUDIO;
+                case 3 -> type = MultimediaType.VIDEO;
+                default -> {
+                    System.out.println("Numero non valido");
+                    i--;
+                    continue;
+                }
+            }
+
+            System.out.println("Inserisci il titolo del file");
+            String title = scanner.nextLine();
+
+            //faccio uno switch case per ricevere i dati corretti per ogni tipo
+            switch (type) {
+                case IMAGE -> {
+                    System.out.println("Inserisci un numero da 1 a 5 per definire la luminosità");
+                    int brightness = Integer.parseInt(scanner.nextLine());
+                    element[i] = new Image(title, brightness);
+                }
+                case AUDIO -> {
+                    System.out.println("Inserisci un numero da 1 a 5 per definire il volume");
+                    int volume = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Inserisci un numero da 1 a 5 per definire la durata");
+                    double duration = Integer.parseInt(scanner.nextLine());
+                    element[i] = new Audio(title, volume, duration);
+                }
+                case VIDEO -> {
+                    System.out.println("Inserisci un numero da 1 a 5 per definire la luminosità");
+                    int brightness = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Inserisci un numero da 1 a 5 per definire il volume");
+                    int volume = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Inserisci un numero da 1 a 5 per definire la durata");
+                    double duration = Integer.parseInt(scanner.nextLine());
+                    element[i] = new Video(title, brightness, volume, duration);
+                }
+            }
+        }
 
         int elementNumber;
 
@@ -33,7 +84,7 @@ public class Main {
                     if (elements instanceof CanPlay player) {
                         player.play();
                     }
-
+                    //mentre per Image:
                     if (elements instanceof Image bright) {
                         bright.show();
                     }
@@ -46,6 +97,4 @@ public class Main {
 
         scanner.close();
     }
-
-    //dove dovrei usare i getter e i setter per luminosità, volume e durata???
 }
