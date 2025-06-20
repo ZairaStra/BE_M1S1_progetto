@@ -1,7 +1,4 @@
-import Player.entities.Audio;
-import Player.entities.Image;
-import Player.entities.MultimediaElement;
-import Player.entities.Video;
+import Player.entities.*;
 
 import java.util.Scanner;
 
@@ -26,10 +23,21 @@ public class Main {
             elementNumber = Integer.parseInt(scanner.nextLine());
 
             switch (elementNumber) {
-                case 1, 2, 3, 4, 5 ->
-                        element[elementNumber - 1];//devo inserire un controllo per capire quale tipo di oggetto è
-                //e usare il metodo giusto per stampare in console
-                //if else annidato???
+                case 1, 2, 3, 4, 5 -> {
+                    MultimediaElement elements = element[elementNumber - 1];
+                    //devo inserire un controllo per capire quale tipo di oggetto è
+                    //e usare il metodo giusto per stampare in console
+                    //if else annidato???
+                    //il metodo show() è solo di Image perchè in Video l'ho costruito dentro play()
+                    //per cui basta CanPlay per far fare entrambe le cose a Video e la riproduzione audio a Audio
+                    if (elements instanceof CanPlay player) {
+                        player.play();
+                    }
+
+                    if (elements instanceof Image bright) {
+                        bright.show();
+                    }
+                }
                 case 0 -> System.out.println("Programma terminato.");
                 default -> System.out.println("Numero non valido.");
             }
