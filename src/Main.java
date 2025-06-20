@@ -83,11 +83,13 @@ public class Main {
                     //if else annidato???
                     //il metodo show() è solo di Image perchè in Video l'ho costruito dentro play()
                     //per cui basta CanPlay per far fare entrambe le cose a Video e la riproduzione audio a Audio
-                    if (elements instanceof CanPlay player) {
+                    if (elements instanceof CanPlay) {
+                        CanPlay player = (CanPlay) elements;
                         player.play();
                     }
                     //mentre per Image:
-                    if (elements instanceof Image bright) {
+                    if (elements instanceof Image) {
+                        Image bright = (Image) elements;
                         bright.show();
                     }
                 }
@@ -99,4 +101,6 @@ public class Main {
 
         scanner.close();
     }
+
+    //dove uso i metodi per alzare/abbassare il volume, aumentare/diminuire luminosità e get/set durata?
 }

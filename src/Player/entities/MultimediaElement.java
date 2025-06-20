@@ -10,8 +10,8 @@ public abstract class MultimediaElement {
         this.title = title;
     }
 
-    //METODI
-    public String getTitle() {
-        return title;
-    }
+    //METODI - non uso mai il getter per il titolo, non serve
+//    public String getTitle() {
+//        return title;
+//    }
 }
