@@ -5,10 +5,10 @@ public class Video extends MultimediaElement implements CanBright, CanPlay {
     //ATTRIBUTI
     private int brightness;
     private int volume;
-    private double duration;
+    private int duration;
 
     //COSTRUTTORI
-    public Video(String title, int brightness, int volume, double duration) {
+    public Video(String title, int brightness, int volume, int duration) {
         super(title);
         this.brightness = brightness;
         this.volume = volume;
@@ -24,8 +24,18 @@ public class Video extends MultimediaElement implements CanBright, CanPlay {
 
     //CanBright
     @Override
-    public int getBrightness() {
-        return brightness;
+//    public int getBrightness() {
+//        return brightness;
+//    }
+    public String getBrightness() {
+        return switch (brightness) {
+            case 1 -> "*";
+            case 2 -> "**";
+            case 3 -> "***";
+            case 4 -> "****";
+            case 5 -> "*****";
+            default -> "";
+        };
     }
 
     @Override
@@ -45,8 +55,18 @@ public class Video extends MultimediaElement implements CanBright, CanPlay {
     //CanPlay
 
     @Override
-    public int getVolume() {
-        return volume;
+//    public int getVolume() {
+//        return volume;
+//    }
+    public String getVolume() {
+        return switch (volume) {
+            case 1 -> "!";
+            case 2 -> "!!";
+            case 3 -> "!!!";
+            case 4 -> "!!!!";
+            case 5 -> "!!!!!";
+            default -> "";
+        };
     }
 
     @Override
@@ -60,12 +80,12 @@ public class Video extends MultimediaElement implements CanBright, CanPlay {
     }
 
     @Override
-    public double getDuration() {
+    public int getDuration() {
         return duration;
     }
 
     @Override
-    public void setDuration(double duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 

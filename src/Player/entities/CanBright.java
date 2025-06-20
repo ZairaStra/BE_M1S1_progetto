@@ -2,7 +2,9 @@ package Player.entities;
 
 public interface CanBright {
 
-    int getBrightness();
+//    int getBrightness();
+
+    String getBrightness();
 
     void addBrightness();
 

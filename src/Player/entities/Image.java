@@ -19,8 +19,18 @@ public class Image extends MultimediaElement implements CanBright {
     }
 
     @Override
-    public int getBrightness() {
-        return brightness;
+//    public int getBrightness() {
+//        return brightness;
+//    }
+    public String getBrightness() {
+        return switch (brightness) {
+            case 1 -> "*";
+            case 2 -> "**";
+            case 3 -> "***";
+            case 4 -> "****";
+            case 5 -> "*****";
+            default -> "";
+        };
     }
 
     @Override

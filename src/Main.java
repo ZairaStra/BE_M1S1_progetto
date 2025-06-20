@@ -34,6 +34,7 @@ public class Main {
                 default -> {
                     System.out.println("Numero non valido");
                     i--;
+                    //se non uso il continue si rompe tutto, passa direttamente al blocco successivo
                     continue;
                 }
             }
@@ -52,7 +53,7 @@ public class Main {
                     System.out.println("Inserisci un numero da 1 a 5 per definire il volume");
                     int volume = Integer.parseInt(scanner.nextLine());
                     System.out.println("Inserisci un numero da 1 a 5 per definire la durata");
-                    double duration = Integer.parseInt(scanner.nextLine());
+                    int duration = Integer.parseInt(scanner.nextLine());
                     element[i] = new Audio(title, volume, duration);
                 }
                 case VIDEO -> {
@@ -60,8 +61,9 @@ public class Main {
                     int brightness = Integer.parseInt(scanner.nextLine());
                     System.out.println("Inserisci un numero da 1 a 5 per definire il volume");
                     int volume = Integer.parseInt(scanner.nextLine());
-                    System.out.println("Inserisci un numero da 1 a 5 per definire la durata");
-                    double duration = Integer.parseInt(scanner.nextLine());
+                    //cambiare tipo di duration da double a int in tutti i file per accettare solo numeri interi
+                    System.out.println("Inserisci un numero da 1 a 5 per definire la durata in minuti");
+                    int duration = Integer.parseInt(scanner.nextLine());
                     element[i] = new Video(title, brightness, volume, duration);
                 }
             }
@@ -89,8 +91,8 @@ public class Main {
                         bright.show();
                     }
                 }
-                case 0 -> System.out.println("Programma terminato.");
-                default -> System.out.println("Numero non valido.");
+                case 0 -> System.out.println("Programma terminato");
+                default -> System.out.println("Numero non valido");
             }
 
         } while (elementNumber != 0);

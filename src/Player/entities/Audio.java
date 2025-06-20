@@ -5,10 +5,10 @@ public class Audio extends MultimediaElement implements CanPlay {
     //ATTRIBUTI
     private int volume;
 
-    private double duration;
+    private int duration;
 
     //COSTRUTTORI
-    public Audio(String title, int volume, double duration) {
+    public Audio(String title, int volume, int duration) {
         super(title);
         this.volume = volume;
         this.duration = duration;
@@ -21,8 +21,18 @@ public class Audio extends MultimediaElement implements CanPlay {
 
 
     @Override
-    public int getVolume() {
-        return volume;
+//    public int getVolume() {
+//        return volume;
+//    }
+    public String getVolume() {
+        return switch (volume) {
+            case 1 -> "!";
+            case 2 -> "!!";
+            case 3 -> "!!!";
+            case 4 -> "!!!!";
+            case 5 -> "!!!!!";
+            default -> "";
+        };
     }
 
     @Override
@@ -36,12 +46,12 @@ public class Audio extends MultimediaElement implements CanPlay {
     }
 
     @Override
-    public double getDuration() {
+    public int getDuration() {
         return duration;
     }
 
     @Override
-    public void setDuration(double duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
